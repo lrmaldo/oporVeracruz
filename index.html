@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPOR - Veracruz, México</title>
+    
+    <!-- Tailwind CSS (CDN para prototipado rápido y archivo único) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración básica de fuentes y colores corporativos -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3d4655',   /* Gris Azulado del Logo */
+                        secondary: '#cec5ba', /* Beige/Arena del Logo */
+                        accent: '#f8fafc',    /* Fondos claros */
+                    },
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    /* Animaciones personalizadas */
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.6s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.6s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Ajustes menores si es necesario */
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        
+        /* Estilos base para elementos animables - Ocultos hasta que se activen */
+        .animate-on-scroll {
+            opacity: 0;
+        }
+        
+        /* Transiciones suaves globales */
+        * {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* -----------------------------
+           Microinteracciones globales
+           ----------------------------- */
+        /* Enlaces: subrayado animado y foco accesible */
+        a.link-underline {
+            position: relative;
+            color: inherit;
+            text-decoration: none;
+        }
+        a.link-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 2px;
+            width: 0;
+            background: currentColor;
+            transition: width 280ms cubic-bezier(.4,0,.2,1);
+        }
+        a.link-underline:hover::after,
+        a.link-underline:focus-visible::after {
+            width: 100%;
+        }
+        a.link-underline:focus-visible {
+            outline: 3px solid rgba(59,130,246,0.18);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        /* Tarjetas interactivas: elevación, ligero parallax al hover y foco */
+        .interactive-card {
+            will-change: transform, box-shadow;
+            transition: transform 300ms cubic-bezier(.22,.9,.29,1), box-shadow 300ms;
+        }
+        .interactive-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+        }
+        .interactive-card:active {
+            transform: translateY(-2px) scale(0.998);
+        }
+        .interactive-card:focus-within {
+            box-shadow: 0 12px 30px rgba(59,130,246,0.08);
+            transform: translateY(-4px);
+        }
+
+        /* Iconos dentro de tarjetas: micro-rotación y escala */
+        .interactive-card .icon-anim {
+            transition: transform 300ms cubic-bezier(.4,0,.2,1);
+            transform-origin: center;
+        }
+        .interactive-card:hover .icon-anim {
+            transform: translateY(-3px) rotate(-6deg) scale(1.06);
+        }
+
+        /* CTA buttons micro-interaction */
+        .btn-cta {
+            transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms;
+        }
+        .btn-cta:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 30px rgba(59,130,246,0.18);
+        }
+
+        /* Small utility for accessible focus outlines */
+        :focus-visible { outline: 3px solid rgba(59,130,246,0.14); outline-offset: 3px; }
+    </style>
+</head>
+<body class="bg-white text-slate-600 antialiased">
+
+    <!-- NAV (Simple) -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Nombre del Proyecto -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="img/logo.jpeg" alt="OPOR Logo" class="h-10 w-auto object-contain">
+                    <div class="font-bold text-xl text-primary tracking-tight leading-tight">
+                        OPOR
+                        <span class="text-xs font-normal text-slate-500 block">Veracruz, México</span>
+                    </div>
+                </div>
+                <!-- Menú simple desktop -->
+                <div class="hidden md:flex space-x-8">
+                    <!-- ANIMACIÓN: Links con transición suave y subrayado -->
+                    <a href="#mision" class="text-slate-600 hover:text-secondary transition-all duration-300 relative group">
+                        Misión
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#que-es" class="text-slate-600 hover:text-secondary transition-all duration-300 relative group">
+                        Internet Hotspot
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#servicios" class="text-slate-600 hover:text-secondary transition-all duration-300 relative group">
+                        Servicios
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#equipo" class="text-slate-600 hover:text-secondary transition-all duration-300 relative group">
+                        Equipo
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <!-- ANIMACIÓN: Botón con efecto hover elevado -->
+                    <a href="#contacto" class="px-4 py-2 rounded-md bg-primary text-secondary font-medium hover:bg-slate-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        Contacto
+                    </a>
+                </div>
+                <!-- Mobile CTA (Solo icono o botón pequeño) -->
+                <div class="md:hidden">
+                    <a href="#contacto" class="text-sm font-bold text-primary">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <!-- Objetivo: Título principal claro, Subtítulo, CTA -->
+    <!-- ANIMACIÓN: Hero con entrada escalonada de elementos -->
+    <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-b from-slate-50 to-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <span class="text-secondary font-semibold uppercase tracking-wider text-sm mb-4 block animate-fade-in-down" style="animation-delay: 0.1s;">A tus órdenes</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <!-- TEXTO EDITABLE: Título Principal -->
+                OPOR Veracruz
+            </h1>
+            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s;">
+                <!-- TEXTO EDITABLE: Subtítulo Explicativo -->
+                Te ofrecemos servicios integrales a tu medida, tiempos y presupuestos con base en planeación y profesionalismo sin igual.
+            </p>
+            <!-- ANIMACIÓN: Botones con efectos hover avanzados -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="#contacto" class="inline-flex justify-center items-center px-8 py-3 bg-primary text-secondary font-semibold rounded-lg hover:bg-slate-700 hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg shadow-primary/30 group">
+                    Solicitar Información
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </a>
+                <a href="#servicios" class="inline-flex justify-center items-center px-8 py-3 bg-white text-primary border-2 border-secondary font-semibold rounded-lg hover:bg-slate-50 hover:bg-secondary/10 hover:scale-105 transition-all duration-300">
+                    Ver Servicios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN -->
+    <!-- ANIMACIÓN: Título y texto con slide-in desde la izquierda -->
+    <section id="mision" class="py-16 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl font-bold text-primary mb-6 animate-on-scroll" data-animation="fade-in-up">Nuestra Misión</h2>
+            <p class="text-lg text-slate-600 leading-relaxed italic border-l-4 border-secondary pl-4 bg-white p-6 rounded-r-lg shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 animate-on-scroll" data-animation="slide-in-left">
+                "Lograr mantener mejores propiedades y superar los estándares en la zona de Veracruz para que todos disfrutemos de un mejor entorno."
+            </p>
+        </div>
+    </section>
+
+    <!-- QUÉ ES EL SERVICIO -->
+    <!-- ANIMACIÓN: Entrada con fade-in escalonado -->
+    <section id="que-es" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+            <span class="text-secondary font-semibold uppercase tracking-wider text-sm animate-on-scroll" data-animation="fade-in">El Servicio</span>
+            <h2 class="text-3xl font-bold text-primary mt-2 mb-6 animate-on-scroll" data-animation="fade-in-up">Internet Hotspot Publicitario</h2>
+            <p class="text-lg text-slate-600 leading-relaxed animate-on-scroll" data-animation="fade-in-up">
+                <!-- TEXTO EDITABLE: Breve descripción -->
+                Un sistema inteligente que transforma tu red WiFi en una poderosa herramienta de marketing. Permite ofrecer conexión a internet de calidad a tus usuarios mientras promocionas tus servicios, captas datos y monetizas el acceso.
+            </p>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA (Flujo simple) -->
+    <!-- ANIMACIÓN: Título y cards con entrada secuencial -->
+    <section id="como-funciona" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-primary animate-on-scroll" data-animation="fade-in-up">Cómo funciona</h2>
+                <p class="mt-4 text-slate-500 animate-on-scroll" data-animation="fade-in">Un flujo simple y efectivo para tus clientes</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Línea conectora (visible en desktop) -->
+                <div class="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-slate-200 -z-10"></div>
+
+                <!-- Paso 1 -->
+                <!-- ANIMACIÓN: Cards con hover y entrada escalonada -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center md:pt-12 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-secondary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold md:absolute md:-top-8 md:left-1/2 md:-translate-x-1/2 ring-4 ring-slate-50 group-hover:scale-110 transition-transform duration-300">
+                        1
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Conexión</h3>
+                    <p class="text-sm text-slate-500">El usuario se conecta a la red WiFi abierta del negocio.</p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center md:pt-12 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-secondary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold md:absolute md:-top-8 md:left-1/2 md:-translate-x-1/2 ring-4 ring-slate-50 group-hover:scale-110 transition-transform duration-300">
+                        2
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Portal</h3>
+                    <p class="text-sm text-slate-500">Se despliega automáticamente el portal cautivo de bienvenida.</p>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center md:pt-12 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 bg-secondary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold md:absolute md:-top-8 md:left-1/2 md:-translate-x-1/2 ring-4 ring-slate-50 group-hover:scale-110 transition-transform duration-300">
+                        3
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Publicidad</h3>
+                    <p class="text-sm text-slate-500">Visualización de promociones, branding o captura de datos.</p>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center md:pt-12 relative hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-secondary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold md:absolute md:-top-8 md:left-1/2 md:-translate-x-1/2 ring-4 ring-slate-50 group-hover:scale-110 transition-transform duration-300">
+                        4
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Acceso</h3>
+                    <p class="text-sm text-slate-500">Navegación libre a internet de alta velocidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS PARA NEGOCIOS / HOTELES -->
+    <!-- ANIMACIÓN: Título y grid de beneficios -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-12">
+                <span class="text-secondary font-semibold uppercase tracking-wider text-sm animate-on-scroll" data-animation="fade-in">Valor Estratégico</span>
+                <h2 class="text-3xl font-bold text-primary mt-2 animate-on-scroll" data-animation="fade-in-up">Beneficios para su negocio</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Beneficio 1 -->
+                <!-- ANIMACIÓN: Cards de beneficios con efecto 3D y animación de iconos -->
+                <div class="p-6 bg-slate-50 rounded-lg border border-slate-100 hover:shadow-xl hover:-translate-y-1 hover:border-secondary/50 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="scale-in" style="animation-delay: 0.1s;">
+                    <!-- Icono SVG -->
+                    <svg class="w-10 h-10 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h3 class="font-bold text-primary text-lg mb-2">Captación de Clientes</h3>
+                    <p class="text-sm text-slate-600">Construya una base de datos real de sus visitantes para futuras campañas.</p>
+                </div>
+
+                <!-- Beneficio 2 -->
+                <div class="p-6 bg-slate-50 rounded-lg border border-slate-100 hover:shadow-xl hover:-translate-y-1 hover:border-secondary/50 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="scale-in" style="animation-delay: 0.2s;">
+                    <svg class="w-10 h-10 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    <h3 class="font-bold text-primary text-lg mb-2">Branding</h3>
+                    <p class="text-sm text-slate-600">Refuerce su marca en cada conexión con portales totalmente personalizados.</p>
+                </div>
+                
+                <!-- Beneficio 3 -->
+                <div class="p-6 bg-slate-50 rounded-lg border border-slate-100 hover:shadow-xl hover:-translate-y-1 hover:border-secondary/50 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="scale-in" style="animation-delay: 0.3s;">
+                    <svg class="w-10 h-10 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
+                    <h3 class="font-bold text-primary text-lg mb-2">Analítica</h3>
+                    <p class="text-sm text-slate-600">Conozca quién visita su negocio, tiempos de conexión y recurrencia.</p>
+                </div>
+
+                <!-- Beneficio 4 -->
+                <div class="p-6 bg-slate-50 rounded-lg border border-slate-100 hover:shadow-xl hover:-translate-y-1 hover:border-secondary/50 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="scale-in" style="animation-delay: 0.4s;">
+                    <svg class="w-10 h-10 text-secondary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="font-bold text-primary text-lg mb-2">Valor al Huésped</h3>
+                    <p class="text-sm text-slate-600">Mejore la experiencia del usuario con una conexión WiFi fiable y fácil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIONES / SERVICIOS -->
+    <!-- ANIMACIÓN: Sección oscura con animaciones sutiles -->
+    <section id="servicios" class="py-20 bg-primary text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold animate-on-scroll" data-animation="fade-in-up">Nuestros Servicios</h2>
+                <p class="text-slate-400 mt-4 animate-on-scroll" data-animation="fade-in">Soluciones integrales para su propiedad y negocio</p>
+            </div>
+
+            <!-- Grid de servicios -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. Venta / Renta / Airb&b -->
+                <!-- ANIMACIÓN: Cards de servicios con glow effect -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Casa/Llave -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Venta / Renta / Airb&b</h3>
+                    <p class="text-slate-400 text-sm">Gestión completa de propiedades para venta, alquiler y estancias cortas.</p>
+                </div>
+
+                <!-- 2. Administración Residencial -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Edificio -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Administración Residencial</h3>
+                    <p class="text-slate-400 text-sm">Manejo profesional de condominios y residenciales de alto nivel.</p>
+                </div>
+
+                <!-- 3. Telecomunicaciones -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Wifi/Signal -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.212 0"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Telecomunicaciones</h3>
+                    <p class="text-slate-400 text-sm">
+                        <span class="text-white font-medium">IFREE</span> (Internet público gratuito) y <br>
+                        <span class="text-white font-medium">SATTLINK</span> (Internet Residencial y publicidad).
+                    </p>
+                </div>
+
+                <!-- 4. Aplicaciones a la Medida -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono App/Code -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Aplicaciones a la Medida</h3>
+                    <p class="text-slate-400 text-sm">Desarrollo de software personalizado para optimizar la operación de su negocio.</p>
+                </div>
+
+                <!-- 5. Paneles Solares -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Sol/Energía -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Paneles Solares y Comunicación</h3>
+                    <p class="text-slate-400 text-sm">Energía sustentable y sistemas avanzados de comunicación interna.</p>
+                </div>
+
+                <!-- 6. Inmuebles Inteligentes -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Smart Home -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Inmuebles Inteligentes</h3>
+                    <p class="text-slate-400 text-sm">Domótica e inteligencia aplicada para el máximo confort y seguridad.</p>
+                </div>
+
+                <!-- 7. Remodelaciones y Mantenimiento -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Herramientas -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Remodelaciones</h3>
+                    <p class="text-slate-400 text-sm">Renovación de espacios y conservación preventiva de inmuebles.</p>
+                </div>
+
+                <!-- 8. Desarrollo de Negocios -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Gráfica -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Desarrollo de Negocios</h3>
+                    <p class="text-slate-400 text-sm">Asesoría estratégica para potenciar inversiones inmobiliarias.</p>
+                </div>
+
+                <!-- 9. Arquitectura y Construcción -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.9s;">
+                    <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
+                        <!-- Icono Casco/Regla -->
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors duration-300">Arquitectura</h3>
+                    <p class="text-slate-400 text-sm">Diseño y ejecución de obras con los mejores estándares técnicos.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <span class="text-secondary font-semibold uppercase tracking-wider text-sm animate-on-scroll" data-animation="fade-in">Liderazgo</span>
+                <h2 class="text-3xl font-bold text-primary mt-2 animate-on-scroll" data-animation="fade-in-up">Nuestro Equipo</h2>
+                <p class="text-slate-500 mt-4 animate-on-scroll" data-animation="fade-in">Profesionales dedicados a la excelencia en cada proyecto</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Carlo Jácome -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary text-center">Carlo Jácome</h3>
+                    <p class="text-secondary font-medium text-sm text-center mb-4 uppercase tracking-wide">Business Development</p>
+                    <div class="h-px bg-slate-200 w-12 mx-auto mb-4"></div>
+                    <p class="text-slate-600 text-sm text-center italic">Logística, Mantenimiento y Remodelaciones</p>
+                </div>
+
+                <!-- Vianney Zamora -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary text-center">Vianney Zamora</h3>
+                    <p class="text-secondary font-medium text-sm text-center mb-4 uppercase tracking-wide">Business Development</p>
+                    <div class="h-px bg-slate-200 w-12 mx-auto mb-4"></div>
+                    <p class="text-slate-600 text-sm text-center italic">Administración inmobiliaria y Supervisión de equipos</p>
+                </div>
+
+                <!-- Gerardo Pesqueira -->
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary text-center">Gerardo Pesqueira</h3>
+                    <p class="text-secondary font-medium text-sm text-center mb-4 uppercase tracking-wide">Business Development</p>
+                    <div class="h-px bg-slate-200 w-12 mx-auto mb-4"></div>
+                    <p class="text-slate-600 text-sm text-center italic">Real Estate, Operación y Gestión legal o fiscal inmobiliaria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <!-- ANIMACIÓN: Sección de contacto con CTA destacado -->
+    <section id="contacto" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl font-bold text-primary mb-8 animate-on-scroll" data-animation="fade-in-up">¿Listo para revolucionar su conectividad?</h2>
+            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-slate-100 hover:shadow-2xl transition-shadow duration-300 animate-on-scroll" data-animation="scale-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Columna info -->
+                    <div class="text-left space-y-6">
+                        <h3 class="text-xl font-bold text-primary">Contáctanos hoy</h3>
+                        <p class="text-slate-600">Hablemos sobre cómo podemos mejorar la conectividad y el marketing de su negocio.</p>
+                        
+                        <div class="flex items-center space-x-3 text-slate-700">
+                            <!-- Icono Mail -->
+                            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <a href="mailto:info@ejemplo.com" class="hover:text-secondary font-medium">info@ejemplo.com</a>
+                        </div>
+                        
+                        <!-- Redes Sociales Placeholders -->
+                        <div class="flex space-x-4 pt-4">
+                            <a href="#" class="text-slate-400 hover:text-secondary">LinkedIn</a>
+                            <a href="#" class="text-slate-400 hover:text-secondary">Instagram</a>
+                            <a href="#" class="text-slate-400 hover:text-secondary">Web</a>
+                        </div>
+                    </div>
+
+                    <!-- Columna Botón WhatsApp -->
+                    <!-- ANIMACIÓN: Botón WhatsApp con pulse suave -->
+                    <div class="flex flex-col justify-center items-center">
+                         <a href="https://wa.me/1234567890" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 hover:scale-105 group animate-pulse-soft">
+                            <svg class="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                            Escribir por WhatsApp
+                        </a>
+                        <p class="text-xs text-slate-400 mt-3">Respuesta inmediata</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER simple -->
+    <footer class="bg-primary py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 OPOR. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT: Intersection Observer para animaciones al scroll -->
+    <!-- ========================================= -->
+    <script>
+        // Sistema de animaciones al hacer scroll usando Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración del observer
+            const observerOptions = {
+                threshold: 0.1, // 10% del elemento visible
+                rootMargin: '0px 0px -50px 0px' // Trigger un poco antes
+            };
+
+            // Callback cuando un elemento entra en viewport
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Agregar clase de animación basada en data-animation
+                        const animationType = entry.target.dataset.animation || 'fade-in';
+                        entry.target.classList.add(`animate-${animationType}`);
+                        entry.target.style.opacity = '1';
+                        
+                        // Dejar de observar este elemento (animación única)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            // Crear el observer
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            // Observar todos los elementos con clase 'animate-on-scroll'
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Smooth scroll para los enlaces del menú
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Efecto parallax sutil en el hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('section');
+                if (hero && scrolled < 600) {
+                    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    hero.style.opacity = 1 - (scrolled / 600);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
