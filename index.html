@@ -75,9 +75,9 @@
         /* Ajustes menores si es necesario */
         body { font-family: system-ui, -apple-system, sans-serif; }
         
-        /* Estilos base para elementos animables - Ocultos hasta que se activen */
+        /* Estilos base para elementos animables */
         .animate-on-scroll {
-            opacity: 0;
+            opacity: 1;
         }
         
         /* Transiciones suaves globales */
@@ -204,17 +204,17 @@
     <!-- ANIMACIÓN: Hero con entrada escalonada de elementos -->
     <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-to-b from-slate-50 to-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <span class="text-secondary font-semibold uppercase tracking-wider text-sm mb-4 block animate-fade-in-down" style="animation-delay: 0.1s;">A tus órdenes</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <span class="text-secondary font-semibold uppercase tracking-wider text-sm mb-4 block">A tus órdenes</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6">
                 <!-- TEXTO EDITABLE: Título Principal -->
                 OPOR Veracruz
             </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s;">
+            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto">
                 <!-- TEXTO EDITABLE: Subtítulo Explicativo -->
                 Te ofrecemos servicios integrales a tu medida, tiempos y presupuestos con base en planeación y profesionalismo sin igual.
             </p>
-            <!-- ANIMACIÓN: Botones con efectos hover avanzados -->
-            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">
+            <!-- ANIMACIÓN: Botones -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#contacto" class="inline-flex justify-center items-center px-8 py-3 bg-primary text-secondary font-semibold rounded-lg hover:bg-slate-700 hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-lg shadow-primary/30 group">
                     Solicitar Información
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
@@ -530,9 +530,9 @@
                     </div>
 
                     <!-- Columna Botón WhatsApp -->
-                    <!-- ANIMACIÓN: Botón WhatsApp con pulse suave -->
+                    <!-- ANIMACIÓN: Botón WhatsApp -->
                     <div class="flex flex-col justify-center items-center">
-                         <a href="https://wa.me/1234567890" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 hover:scale-105 group animate-pulse-soft">
+                         <a href="https://wa.me/1234567890" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 hover:scale-105 group">
                             <svg class="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
                             Escribir por WhatsApp
                         </a>
@@ -550,7 +550,7 @@
             <p class="mb-4 text-slate-500 font-medium">&copy; 2026 OPOR. Todos los derechos reservados.</p>
             <div class="flex items-center justify-center gap-1.5 text-xs uppercase tracking-widest opacity-80">
                 <span>Desarrollado y hecho con</span>
-                <svg class="w-3.5 h-3.5 text-rose-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
                 </svg>
                 <span>por <span class="text-secondary font-bold">Sattlink</span></span>
@@ -562,38 +562,8 @@
     <!-- JAVASCRIPT: Intersection Observer para animaciones al scroll -->
     <!-- ========================================= -->
     <script>
-        // Sistema de animaciones al hacer scroll usando Intersection Observer
+        // Sistema de animaciones al hacer scroll desactivado
         document.addEventListener('DOMContentLoaded', function() {
-            // Configuración del observer
-            const observerOptions = {
-                threshold: 0.1, // 10% del elemento visible
-                rootMargin: '0px 0px -50px 0px' // Trigger un poco antes
-            };
-
-            // Callback cuando un elemento entra en viewport
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Agregar clase de animación basada en data-animation
-                        const animationType = entry.target.dataset.animation || 'fade-in';
-                        entry.target.classList.add(`animate-${animationType}`);
-                        entry.target.style.opacity = '1';
-                        
-                        // Dejar de observar este elemento (animación única)
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-
-            // Crear el observer
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-            // Observar todos los elementos con clase 'animate-on-scroll'
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-
             // Smooth scroll para los enlaces del menú
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -608,15 +578,7 @@
                 });
             });
 
-            // Efecto parallax sutil en el hero
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const hero = document.querySelector('section');
-                if (hero && scrolled < 600) {
-                    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    hero.style.opacity = 1 - (scrolled / 600);
-                }
-            });
+            // Parallax sutil en el hero desactivado para evitar efectos de desvanecimiento
         });
     </script>
 
