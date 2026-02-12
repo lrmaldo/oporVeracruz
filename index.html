@@ -199,10 +199,27 @@
                         Contacto
                     </a>
                 </div>
-                <!-- Mobile CTA (Solo icono o botón pequeño) -->
-                <div class="md:hidden">
-                    <a href="#contacto" class="text-sm font-bold text-primary">Contactar</a>
+                <!-- Mobile Menu Button & Contact -->
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="#contacto" class="text-xs font-bold bg-primary text-secondary px-3 py-1.5 rounded-md">Contactar</a>
+                    <button id="mobile-menu-button" class="text-primary focus:outline-none p-1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 animate-fade-in">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#mision" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg">Misión</a>
+                <a href="#que-es" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg">Internet Hotspot</a>
+                <a href="#servicios" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg">Servicios</a>
+                <a href="#equipo" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg">Equipo</a>
+                <a href="#contacto" class="block px-3 py-3 text-base font-medium text-secondary bg-primary rounded-lg text-center mt-4">Contacto</a>
             </div>
         </div>
     </nav>
@@ -230,6 +247,44 @@
                 <a href="#servicios" class="inline-flex justify-center items-center px-8 py-3 bg-white text-primary border-2 border-secondary font-semibold rounded-lg hover:bg-slate-50 hover:bg-secondary/10 hover:scale-105 transition-all duration-300">
                     Ver Servicios
                 </a>
+            </div>
+
+            <!-- ÍNDICE RÁPIDO DE SERVICIOS (Iconos) -->
+            <div class="mt-16 pt-8 border-t border-slate-200/60 animate-on-scroll" style="transition-delay: 600ms;">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-6">Acceso Rápido a Servicios</p>
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
+                    <!-- Servicio 1: Inmuebles -->
+                    <a href="#servicio-inmuebles" class="group flex flex-col items-center gap-2 transition-all duration-300">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Inmuebles</span>
+                    </a>
+                    
+                    <!-- Servicio 2: Telecomunicaciones -->
+                    <a href="#servicio-telecom" class="group flex flex-col items-center gap-2 transition-all duration-300">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Telecom</span>
+                    </a>
+                    
+                    <!-- Servicio 3: Remodelación -->
+                    <a href="#servicio-reformas" class="group flex flex-col items-center gap-2 transition-all duration-300">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Reformas</span>
+                    </a>
+                    
+                    <!-- Servicio 4: Hotspot -->
+                    <a href="#que-es" class="group flex flex-col items-center gap-2 transition-all duration-300">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
+                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.212 0"></path></svg>
+                        </div>
+                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Hotspot</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -368,7 +423,7 @@
                 
                 <!-- 1. Venta / Renta / Airb&b -->
                 <!-- ANIMACIÓN: Cards de servicios con glow effect -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.1s;">
+                <div id="servicio-inmuebles" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.1s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Casa/Llave -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
@@ -388,7 +443,7 @@
                 </div>
 
                 <!-- 3. Telecomunicaciones -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.3s;">
+                <div id="servicio-telecom" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.3s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Wifi/Signal -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.212 0"></path></svg>
@@ -431,7 +486,7 @@
                 </div>
 
                 <!-- 7. Remodelaciones y Mantenimiento -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.7s;">
+                <div id="servicio-reformas" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.7s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Herramientas -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
@@ -597,6 +652,16 @@
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
+                        // Cerrar menú móvil si está abierto
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        const menuIcon = document.getElementById('menu-icon');
+                        const closeIcon = document.getElementById('close-icon');
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                        }
+
                         target.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
@@ -604,6 +669,20 @@
                     }
                 });
             });
+
+            // Lógica del Menú Móvil
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.toggle('hidden');
+                    menuIcon.classList.toggle('hidden', !isHidden);
+                    closeIcon.classList.toggle('hidden', isHidden);
+                });
+            }
         });
     </script>
 
