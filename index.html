@@ -251,38 +251,79 @@
 
             <!-- ÍNDICE RÁPIDO DE SERVICIOS (Iconos) -->
             <div class="mt-16 pt-8 border-t border-slate-200/60 animate-on-scroll" style="transition-delay: 600ms;">
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-6">Acceso Rápido a Servicios</p>
-                <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
-                    <!-- Servicio 1: Inmuebles -->
-                    <a href="#servicio-inmuebles" class="group flex flex-col items-center gap-2 transition-all duration-300">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
-                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        </div>
-                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Inmuebles</span>
-                    </a>
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-6 text-center">Nuestros Servicios</p>
+                <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-4 sm:gap-6 justify-items-center">
                     
-                    <!-- Servicio 2: Telecomunicaciones -->
-                    <a href="#servicio-telecom" class="group flex flex-col items-center gap-2 transition-all duration-300">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
-                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <!-- 1. Inmuebles -->
+                    <a href="#servicio-inmuebles" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         </div>
-                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Telecom</span>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Venta/Renta</span>
                     </a>
-                    
-                    <!-- Servicio 3: Remodelación -->
-                    <a href="#servicio-reformas" class="group flex flex-col items-center gap-2 transition-all duration-300">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
-                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+
+                    <!-- 2. Administración -->
+                    <a href="#servicio-admin" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
-                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Reformas</span>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Admin</span>
                     </a>
-                    
-                    <!-- Servicio 4: Hotspot -->
-                    <a href="#que-es" class="group flex flex-col items-center gap-2 transition-all duration-300">
-                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-xl group-hover:-translate-y-1 group-hover:border-secondary/50 transition-all duration-300">
-                            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.212 0"></path></svg>
+
+                    <!-- 3. Telecom -->
+                    <a href="#servicio-telecom" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                         </div>
-                        <span class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider group-hover:text-primary transition-colors">Hotspot</span>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Telecom</span>
+                    </a>
+
+                    <!-- 4. Apps -->
+                    <a href="#servicio-apps" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">App/Software</span>
+                    </a>
+
+                    <!-- 5. Solar -->
+                    <a href="#servicio-solar" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Solar</span>
+                    </a>
+
+                    <!-- 6. Smart -->
+                    <a href="#servicio-smart" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-xl shadow-primary/5 bg-secondary/10 border border-secondary/50 flex items-center justify-center group-hover:scale-105 transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Smart Home</span>
+                    </a>
+
+                    <!-- 7. Reformas -->
+                    <a href="#servicio-reformas" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Refacciones</span>
+                    </a>
+
+                    <!-- 8. Negocios -->
+                    <a href="#servicio-negocios" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Negocios</span>
+                    </a>
+
+                    <!-- 9. Arquitectura -->
+                    <a href="#servicio-arquitectura" class="group flex flex-col items-center gap-1.5 transition-all duration-300 w-full max-w-[80px]">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:-translate-y-1 group-hover:border-secondary transition-all">
+                            <svg class="w-6 h-6 text-primary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-tighter text-center leading-tight">Arquitectura</span>
                     </a>
                 </div>
             </div>
@@ -433,7 +474,7 @@
                 </div>
 
                 <!-- 2. Administración Residencial -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.2s;">
+                <div id="servicio-admin" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.2s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Edificio -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
@@ -456,7 +497,7 @@
                 </div>
 
                 <!-- 4. Aplicaciones a la Medida -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.4s;">
+                <div id="servicio-apps" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.4s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono App/Code -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
@@ -466,7 +507,7 @@
                 </div>
 
                 <!-- 5. Paneles Solares -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.5s;">
+                <div id="servicio-solar" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.5s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Sol/Energía -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -476,7 +517,7 @@
                 </div>
 
                 <!-- 6. Inmuebles Inteligentes -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.6s;">
+                <div id="servicio-smart" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.6s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Smart Home -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
@@ -496,7 +537,7 @@
                 </div>
 
                 <!-- 8. Desarrollo de Negocios -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.8s;">
+                <div id="servicio-negocios" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.8s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Gráfica -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
@@ -506,7 +547,7 @@
                 </div>
 
                 <!-- 9. Arquitectura y Construcción -->
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.9s;">
+                <div id="servicio-arquitectura" class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all duration-300 group animate-on-scroll interactive-card" data-animation="fade-in-up" style="animation-delay: 0.9s;">
                     <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300 icon-anim">
                         <!-- Icono Casco/Regla -->
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
