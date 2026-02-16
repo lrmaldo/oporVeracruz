@@ -9,24 +9,31 @@
         .vcard-gradient { background: linear-gradient(135deg, #3d4655 0%, #2a313c 100%); }
         .btn-action { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .btn-action:active { transform: scale(0.95); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .profile-anim { animation: fadeIn 0.8s ease-out forwards; }
+        .img-hover { transition: transform 0.5s ease; }
+        .img-hover:hover { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-4 antialiased">
     <div class="max-w-sm w-full bg-white rounded-[2.5rem] shadow-2xl shadow-slate-300/50 overflow-hidden border border-slate-100 relative">
         <div class="h-32 vcard-gradient relative">
             <div class="absolute -bottom-12 left-1/2 -translate-x-1/2">
-                <div class="w-24 h-24 bg-white rounded-3xl p-1 shadow-xl border border-slate-50">
-                    <div class="w-full h-full bg-slate-100 rounded-[1.2rem] flex items-center justify-center overflow-hidden">
-                        <img src="../img/logo.jpeg" alt="Gerardo Pesqueira" class="w-full h-full object-cover">
+                <div class="w-24 h-24 bg-white rounded-xl p-1 shadow-xl border border-slate-50 profile-anim">
+                    <div class="w-full h-full bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="../img/gerardo.jpeg" alt="Gerardo Pesqueira" class="w-full h-full object-cover img-hover">
                     </div>
                 </div>
             </div>
         </div>
         <div class="pt-16 pb-10 px-6 text-center">
             <h1 class="text-2xl font-bold text-[#3d4655] mb-1">Gerardo Pesqueira</h1>
-            <p class="text-[#cec5ba] font-semibold uppercase tracking-widest text-[10px] mb-6">BUSINESS DEVELOPMENT</p>
+            <p class="text-[#cec5ba] font-semibold uppercase tracking-widest text-[10px] mb-6">BUSINESS DEVELOPMENT & TELECOM</p>
             <div class="mb-8">
-                <p class="text-slate-500 text-sm italic leading-relaxed">Real Estate, Operación y Gestión legal inmobiliaria</p>
+                <p class="text-slate-500 text-sm italic leading-relaxed">Real Estate, Telecomunicaciones, Operación y Gestión legal</p>
             </div>
             <div class="grid grid-cols-1 gap-3">
                 <a href="https://wa.me/521234567892" target="_blank" class="btn-action w-full bg-green-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center shadow-lg shadow-green-200">
@@ -51,7 +58,7 @@
     </div>
     <script>
         function downloadVCard() {
-            const vcard = 'BEGIN:VCARD\nVERSION:3.0\nFN:Gerardo Pesqueira\nORG:OPOR Veracruz\nTITLE:Business Development\nTEL;TYPE=CELL:+521234567892\nURL:https://opor.mx\nEND:VCARD';
+            const vcard = 'BEGIN:VCARD\nVERSION:3.0\nFN:Gerardo Pesqueira\nORG:OPOR Veracruz\nTITLE:Business Development & Telecomunicaciones\nTEL;TYPE=CELL:+521234567892\nURL:https://opor.mx\nEND:VCARD';
             const blob = new Blob([vcard], { type: 'text/vcard' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
